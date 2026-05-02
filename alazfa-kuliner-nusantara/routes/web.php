@@ -41,7 +41,7 @@ Route::middleware('auth')->get('/dashboard', function () {
 // RUTE PELANGGAN
 // ==========================================
 Route::middleware(['auth', 'role:pelanggan'])->group(function () {
-    Route::get('/pelanggan/dashboard', [\App\Http\Controllers\HomeController::class, 'index'])->name('pelanggan.dashboard');
+    Route::get('/pelanggan/dashboard', [\App\Http\Controllers\HomeController::class, 'pelangganDashboard'])->name('pelanggan.dashboard');
     
     // Keranjang
     Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');

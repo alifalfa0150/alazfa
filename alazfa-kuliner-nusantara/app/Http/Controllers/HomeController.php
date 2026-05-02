@@ -22,4 +22,11 @@ class HomeController extends Controller
         if ($request->wantsJson()) return response()->json($sellers);
         return view('sellers.index', compact('sellers'));
     }
+
+    public function pelangganDashboard(Request $request)
+    {
+        $featured_products = Product::with(['store', 'category'])->latest()->take(6)->get();
+        if ($request->wantsJson()) return response()->json($featured_products);
+        return view('pelanggan.dashboard', compact('featured_products'));
+    }
 }

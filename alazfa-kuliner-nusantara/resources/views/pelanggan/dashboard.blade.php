@@ -1,16 +1,9 @@
-<h1>Beranda (Featured Products)</h1>
-<a href="/menu">Lihat Semua Menu</a> | <a href="/penjual">Daftar Toko</a>
-
-@auth
-    | <a href="/dashboard">Dashboard ({{ auth()->user()->role }})</a>
-    | <form method="POST" action="/logout" style="display:inline;">@csrf<button type="submit" style="background:none; border:none; color:blue; text-decoration:underline; cursor:pointer;">Logout</button></form>
-@else
-    | <a href="/login">Login</a>
-    | Register: <a href="/register/pelanggan">Pelanggan</a> - <a href="/register/penjual">Penjual</a> - <a href="/register/kurir">Kurir</a>
-@endauth
-
+<h1>Dashboard Pelanggan</h1>
+<p>Selamat Datang di Alazfa Kuliner Nusantara! Anda berhasil login sebagai Pelanggan.</p>
+<a href="/cart">Keranjang Saya</a> | <a href="/orders">Pesanan Saya</a> | <a href="/favorites">Favorit Saya</a>
+| <form method="POST" action="/logout" style="display:inline;">@csrf<button>Logout</button></form>
 <hr>
-@if(session('success')) <div style="color:green; font-weight:bold;">{{ session('success') }}</div><br> @endif
+<h3>Menu Unggulan</h3>
 <table border="1" cellpadding="5">
     <tr><th>ID</th><th>Toko</th><th>Menu</th><th>Kategori</th><th>Harga</th><th>Aksi</th></tr>
     @foreach($featured_products as $p)
